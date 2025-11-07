@@ -1,0 +1,239 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap');
+
+@import "tailwindcss";
+
+/* Light Mode */
+:root {
+  --color-bg: #F9FAFB;
+  --color-text: #1E293B;
+  --color-text-secondary: #64748B;
+  --color-card: #FFFFFF;
+  --color-border: #E2E8F0;
+  --color-accent: #FFD700;
+  --color-accent-hover: #FFB84C;
+  --color-accent-light: rgba(255, 215, 0, 0.2);
+  --color-button: #FACC15;
+  --color-hover: #FFB84C;
+  --color-navbar-bg: rgba(249, 250, 251, 0.8);
+  --color-footer-text: #64748B;
+  --color-danger: #EF4444;
+  --gradient-card: linear-gradient(180deg, #FFFFFF 0%, #F9FAFB 100%);
+  --shadow-soft: 0 2px 15px rgba(0, 0, 0, 0.08);
+  
+  /* OAuth Button Colors - Light Mode */
+  --color-google: #4285F4;
+  --color-google-hover: #357ae8;
+  --color-facebook: #4285F4;
+  --color-facebook-hover: #357ae8;
+}
+
+/* Dark Mode */
+.dark {
+  --color-bg: #0D1117;
+  --color-text: #E6EDF3;
+  --color-text-secondary: #8B949E;
+  --color-card: #161B22;
+  --color-border: #30363D;
+  --color-accent: #FFD700;
+  --color-accent-hover: #FFB84C;
+  --color-accent-light: rgba(255, 215, 0, 0.2);
+  --color-button: #F1C232;
+  --color-hover: #FFB84C;
+  --color-navbar-bg: rgba(13, 17, 23, 0.8);
+  --color-footer-text: #8B949E;
+  --color-danger: #F87171;
+  --gradient-card: linear-gradient(180deg, #161B22 0%, #0D1117 100%);
+  color-scheme: dark;
+  
+  /* OAuth Button Colors - Dark Mode */
+  --color-google: #00C9A7;
+  --color-google-hover: #00B396;
+  --color-facebook: #00C9A7;
+  --color-facebook-hover: #00B396;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: 'Inter', system-ui, sans-serif;
+  transition: background-color 300ms ease-in-out, color 300ms ease-in-out;
+}
+
+/* Dashboard theme (scoped) -----------------------------------------------
+   Applied when the dashboard root element has the `dashboard-root` class.
+   This keeps the rest of the app unchanged while giving the dashboard a
+   deep charcoal base, subtle card surfaces, and warm gold accents / hover
+   glow effects.
+*/
+.dashboard-root {
+  /* gradient endpoints */
+  --dashboard-bg-start: #0D1117; /* deep charcoal black */
+  --dashboard-bg-end: #161B22;   /* slightly lighter dark gray */
+
+  /* semantic tokens used throughout the app (overrides inside dashboard only) */
+  --color-bg: #0D1117;
+  --color-card: #161B22;
+  --color-text: #E6EDF3;
+  --color-text-secondary: #8B949E;
+  --color-accent: #FFD700;
+  --color-accent-hover: #FFB84C;
+  --color-border: #30363D;
+  --color-button-primary: #F1C232;
+
+  background: linear-gradient(180deg, var(--dashboard-bg-start), var(--dashboard-bg-end));
+  color: var(--color-text);
+}
+
+/* Card / panel base styles (applies to existing .rounded-lg panels in dashboard) */
+.dashboard-root .rounded-lg {
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.08));
+  background-color: var(--color-card);
+  border-radius: 16px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+  border: 1px solid var(--color-border);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.dashboard-root .rounded-lg:hover {
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+  transform: translateY(-2px);
+}
+
+/* Make sure inner elements (text, icons, borders) use the dashboard tokens */
+.dashboard-root {
+  --color-accent-light: rgba(255, 215, 0, 0.12);
+}
+
+.dashboard-root a:hover,
+.dashboard-root a:focus {
+  color: var(--color-accent-hover);
+}
+
+/* Buttons using CSS variables (Button.jsx already reads --color-accent etc) */
+.dashboard-root .btn-primary,
+.dashboard-root button[variant='primary'] {
+  background-color: var(--color-button-primary) !important;
+  color: #0D1117 !important;
+}
+
+/* Small utility for card-like list items that previously used var(--color-bg) */
+.dashboard-root .card-surface {
+  background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(0,0,0,0.06));
+  border-radius: 12px;
+  border: 1px solid var(--color-border);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Poppins', sans-serif;
+  color: var(--color-text);
+  transition: color 300ms ease-in-out;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+  transition: background 300ms ease-in-out;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 4px;
+  transition: background 300ms ease-in-out;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent);
+}
+
+input, textarea, select {
+  background-color: var(--color-card);
+  color: var(--color-text);
+  border-color: var(--color-border);
+  transition: background-color 300ms ease-in-out, color 300ms ease-in-out, border-color 300ms ease-in-out, box-shadow 300ms ease-in-out;
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px var(--color-accent-light);
+}
+
+input::placeholder, textarea::placeholder {
+  color: var(--color-text-secondary);
+  transition: color 300ms ease-in-out;
+}
+
+.shadow-soft {
+  box-shadow: var(--shadow-soft);
+}
+
+.shadow-soft-dark {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Button transitions */
+button, a {
+  transition: all 300ms ease-in-out;
+}
+
+/* Theme transitions */
+div, section, nav, header, footer {
+  transition: all 300ms ease-in-out;
+}
+
+/* Card styles */
+.card {
+  border-radius: 16px;
+  background: var(--gradient-card);
+  border: 1px solid var(--color-border);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.dark .card {
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.card:hover {
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.45);
+  transform: translateY(-2px);
+}
+
+/* Panel styles */
+.panel {
+  border-radius: 16px;
+  padding: 1.5rem;
+  background: var(--gradient-card);
+  border: 1px solid var(--color-border);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.panel:hover {
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.45);
+  transform: translateY(-2px);
+}
+
+/* Text transitions */
+p, span, label {
+  transition: color 300ms ease-in-out;
+}
+
+/* Icon transitions */
+svg {
+  transition: fill 300ms ease-in-out, stroke 300ms ease-in-out;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
