@@ -45,7 +45,7 @@ export const Navbar = () => {
 
             {/* GitHub Link - Hidden on mobile */}
             <a
-              href="https://github.com"
+              href="https://github.com/Hardikgoesgit/CAPSTONE_PROJECT"
               target="_blank"
               rel="noopener noreferrer"
               className="hidden sm:block p-2 rounded-lg transition-colors"

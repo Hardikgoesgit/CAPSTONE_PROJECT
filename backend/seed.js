@@ -36,7 +36,7 @@ const mockUsers = [
   },
   {
     name: 'Admin User',
-    email: 'admin@vora.com',
+    email: 'admin@Sociant.com',
     avatar: 'https://ui-avatars.com/api/?name=Admin+User&size=200',
     roles: ['user', 'admin'],
     providers: [

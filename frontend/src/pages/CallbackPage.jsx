@@ -2,6 +2,7 @@
 import { useEffect, useState, useRef } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { PageLoader } from '../components/atoms/Loader';
+import { Footer } from '../components/organisms/Footer';
 import { useAuth } from '../context/AuthContext';
 import { useToast } from '../components/molecules/Toast';
 import { AlertCircle } from 'lucide-react';
@@ -52,27 +53,37 @@ export const CallbackPage = () => {
 
   if (error) {
     return (
-      <div className="min-h-screen flex items-center justify-center p-3 sm:p-4" style={{ backgroundColor: 'var(--color-bg)' }}>
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          className="max-w-md w-full rounded-lg shadow-soft p-6 sm:p-8 text-center"
-          style={{ backgroundColor: 'var(--color-card)' }}
-        >
-          <AlertCircle className="mx-auto mb-4 text-red-500" size={40} />
-          <h2 className="text-xl sm:text-2xl font-semibold mb-2" style={{ color: 'var(--color-text)' }}>
-            Authentication Failed
-          </h2>
-          <p className="mb-4 text-sm sm:text-base" style={{ color: 'var(--color-text-secondary)' }}>
-            {error}
-          </p>
-          <p className="text-xs sm:text-sm" style={{ color: 'var(--color-text-secondary)' }}>
-            Redirecting to home page...
-          </p>
-        </motion.div>
+      <div className="min-h-screen flex flex-col" style={{ backgroundColor: 'var(--color-bg)' }}>
+        <div className="flex-1 flex items-center justify-center p-3 sm:p-4">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="max-w-md w-full rounded-lg shadow-soft p-6 sm:p-8 text-center"
+            style={{ backgroundColor: 'var(--color-card)' }}
+          >
+            <AlertCircle className="mx-auto mb-4 text-red-500" size={40} />
+            <h2 className="text-xl sm:text-2xl font-semibold mb-2" style={{ color: 'var(--color-text)' }}>
+              Authentication Failed
+            </h2>
+            <p className="mb-4 text-sm sm:text-base" style={{ color: 'var(--color-text-secondary)' }}>
+              {error}
+            </p>
+            <p className="text-xs sm:text-sm" style={{ color: 'var(--color-text-secondary)' }}>
+              Redirecting to home page...
+            </p>
+          </motion.div>
+        </div>
+        <Footer />
       </div>
     );
   }
 
-  return <PageLoader />;
+  return (
+    <div className="min-h-screen flex flex-col" style={{ backgroundColor: 'var(--color-bg)' }}>
+      <div className="flex-1 flex items-center justify-center">
+        <PageLoader />
+      </div>
+      <Footer />
+    </div>
+  );
 };

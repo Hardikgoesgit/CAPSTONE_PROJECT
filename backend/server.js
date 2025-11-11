@@ -22,7 +22,7 @@ const startServer = async () => {
     // Start Express server
     const server = app.listen(PORT, () => {
       logger.info({
-        message: `🚀 Vora backend server started successfully`,
+        message: `🚀 Sociant backend server started successfully`,
         port: PORT,
         environment: config.env,
         nodeVersion: process.version,

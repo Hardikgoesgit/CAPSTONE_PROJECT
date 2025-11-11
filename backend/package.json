@@ -1,7 +1,7 @@
 {
   "name": "vora-backend",
   "version": "1.0.0",
-  "description": "Vora - Modern OAuth2 Authentication Platform Backend",
+  "description": "Sociant - Modern OAuth2 Authentication Platform Backend",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",

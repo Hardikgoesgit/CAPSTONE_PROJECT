@@ -56,7 +56,7 @@ body {
   background-color: var(--color-bg);
   color: var(--color-text);
   font-family: 'Inter', system-ui, sans-serif;
-  transition: background-color 300ms ease-in-out, color 300ms ease-in-out;
+  transition: background-color 300ms ease-in-out;
 }
 
 /* Dashboard theme (scoped) -----------------------------------------------
@@ -126,7 +126,7 @@ body {
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Poppins', sans-serif;
   color: var(--color-text);
-  transition: color 300ms ease-in-out;
+  /* Remove transition for instant color change */
 }
 
 ::-webkit-scrollbar {
@@ -135,13 +135,13 @@ h1, h2, h3, h4, h5, h6 {
 
 ::-webkit-scrollbar-track {
   background: var(--color-bg);
-  transition: background 300ms ease-in-out;
+  /* Remove transition for instant color change */
 }
 
 ::-webkit-scrollbar-thumb {
   background: var(--color-border);
   border-radius: 4px;
-  transition: background 300ms ease-in-out;
+  /* Remove transition for instant color change */
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -152,7 +152,7 @@ input, textarea, select {
   background-color: var(--color-card);
   color: var(--color-text);
   border-color: var(--color-border);
-  transition: background-color 300ms ease-in-out, color 300ms ease-in-out, border-color 300ms ease-in-out, box-shadow 300ms ease-in-out;
+  transition: background-color 300ms ease-in-out, border-color 300ms ease-in-out, box-shadow 300ms ease-in-out;
 }
 
 input:focus, textarea:focus, select:focus {
@@ -163,7 +163,7 @@ input:focus, textarea:focus, select:focus {
 
 input::placeholder, textarea::placeholder {
   color: var(--color-text-secondary);
-  transition: color 300ms ease-in-out;
+  /* Remove transition for instant placeholder color change */
 }
 
 .shadow-soft {
@@ -176,12 +176,12 @@ input::placeholder, textarea::placeholder {
 
 /* Button transitions */
 button, a {
-  transition: all 300ms ease-in-out;
+  transition: background-color 300ms ease-in-out, border-color 300ms ease-in-out, box-shadow 300ms ease-in-out;
 }
 
-/* Theme transitions */
+/* Theme transitions - Only transition specific properties to avoid text delay */
 div, section, nav, header, footer {
-  transition: all 300ms ease-in-out;
+  transition: background-color 300ms ease-in-out, border-color 300ms ease-in-out, box-shadow 300ms ease-in-out;
 }
 
 /* Card styles */
@@ -214,11 +214,6 @@ div, section, nav, header, footer {
 .panel:hover {
   box-shadow: 0 0 15px rgba(255, 215, 0, 0.45);
   transform: translateY(-2px);
-}
-
-/* Text transitions */
-p, span, label {
-  transition: color 300ms ease-in-out;
 }
 
 /* Icon transitions */

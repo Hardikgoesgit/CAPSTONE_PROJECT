@@ -88,7 +88,7 @@ app.use('/api', apiLimiter);
 app.get('/health', (req, res) => {
   res.json({
     success: true,
-    message: 'Vora backend is healthy',
+    message: 'Sociant backend is healthy',
     timestamp: new Date().toISOString(),
     environment: config.env,
     uptime: process.uptime(),
@@ -99,13 +99,13 @@ app.get('/health', (req, res) => {
 app.get('/api', (req, res) => {
   res.json({
     success: true,
-    message: 'Vora API v1',
+    message: 'Sociant API v1',
     version: '1.0.0',
     endpoints: {
       auth: '/api/auth',
       user: '/api/user',
     },
-    documentation: 'https://github.com/amitrajeet7635/Vora',
+    documentation: 'https://github.com/hardikgoesgit/CAPSTONE_PROJECT',
   });
 });
 

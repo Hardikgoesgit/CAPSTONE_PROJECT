@@ -1,8 +1,8 @@
 // Landing Page - Pixel-perfect replication of the design
 import { motion } from 'framer-motion';
-import { Github } from 'lucide-react';
 import { Button } from '../components/atoms/Button';
 import { ThemeToggleButton } from '../components/atoms/ThemeToggleButton';
+import { Footer } from '../components/organisms/Footer';
 import { useAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
@@ -124,34 +124,7 @@ export const LandingPage = () => {
       </div>
 
       {/* Footer */}
-      <footer className="py-4 sm:py-6 px-4" style={{ borderTop: '1px solid var(--color-border)' }}>
-        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 text-xs sm:text-sm" style={{ color: 'var(--color-text-secondary)' }}>
-          <a
-            href="#"
-            className="transition-colors"
-            style={{ color: 'var(--color-text-secondary)' }}
-            onMouseEnter={(e) => e.currentTarget.style.color = 'var(--color-accent)'}
-            onMouseLeave={(e) => e.currentTarget.style.color = 'var(--color-text-secondary)'}
-          >
-            Privacy Policy
-          </a>
-          <span className="hidden sm:inline">•</span>
-          <a
-            href="https://github.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 transition-colors"
-            style={{ color: 'var(--color-text-secondary)' }}
-            onMouseEnter={(e) => e.currentTarget.style.color = 'var(--color-accent)'}
-            onMouseLeave={(e) => e.currentTarget.style.color = 'var(--color-text-secondary)'}
-          >
-            <Github size={16} />
-            GitHub
-          </a>
-          <span className="hidden sm:inline">•</span>
-          <span>© 2025 Vora</span>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 };

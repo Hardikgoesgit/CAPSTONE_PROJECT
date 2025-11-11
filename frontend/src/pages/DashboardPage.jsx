@@ -5,6 +5,7 @@ import { useAuth } from '../context/AuthContext';
 import { useToast } from '../components/molecules/Toast';
 import { Button } from '../components/atoms/Button';
 import { Navbar } from '../components/organisms/Navbar';
+import { Footer } from '../components/organisms/Footer';
 import { useState } from 'react';
 
 export const DashboardPage = () => {
@@ -42,10 +43,10 @@ export const DashboardPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-light-bg dark:bg-dark-bg">
+    <div className="min-h-screen flex flex-col bg-light-bg dark:bg-dark-bg">
       <Navbar />
       
-      <div className="pt-16 sm:pt-20 md:pt-24 pb-8 sm:pb-12 px-3 sm:px-4 md:px-6 lg:px-8">
+      <div className="flex-1 pt-16 sm:pt-20 md:pt-24 pb-8 sm:pb-12 px-3 sm:px-4 md:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -198,6 +199,9 @@ export const DashboardPage = () => {
           </motion.div>
         </div>
       </div>
+
+      {/* Footer */}
+      <Footer />
     </div>
   );
 };

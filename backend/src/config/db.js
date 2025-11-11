@@ -9,6 +9,29 @@ const logger = require('../utils/logger');
 
 let isConnected = false;
 
+const connectWithRetry = async (uri, options, retryCount = 0) => {
+  const maxRetries = 3;
+  
+  try {
+    return await mongoose.connect(uri, options);
+  } catch (error) {
+    if (retryCount < maxRetries && (error.message.includes('SSL') || error.message.includes('TLS') || error.message.includes('tls'))) {
+      logger.warn(`TLS connection attempt ${retryCount + 1} failed, retrying with adjusted settings...`);
+      
+      // Try with different TLS settings
+      const retryOptions = {
+        ...options,
+        tls: false, // Disable TLS for retry
+        tlsAllowInvalidCertificates: undefined,
+        tlsAllowInvalidHostnames: undefined,
+      };
+      
+      return connectWithRetry(uri, retryOptions, retryCount + 1);
+    }
+    throw error;
+  }
+};
+
 const connectDB = async () => {
   // Check if already connected or connecting
   if (isConnected && mongoose.connection.readyState === 1) {
@@ -33,9 +56,16 @@ const connectDB = async () => {
       family: 4, // Use IPv4
       // Prevent buffering commands in serverless
       bufferCommands: false,
+      // TLS settings for secure connection
+      tls: true,
+      tlsAllowInvalidCertificates: false,
+      tlsAllowInvalidHostnames: false,
     };
 
-    const conn = await mongoose.connect(process.env.MONGODB_URI, options);
+    // Log connection attempt
+    logger.info('Attempting MongoDB connection...');
+    
+    const conn = await connectWithRetry(process.env.MONGODB_URI, options);
 
     isConnected = true;
 
